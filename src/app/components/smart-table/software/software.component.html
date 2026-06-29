@@ -41,7 +41,7 @@
   </div>
 </section>
 
-<!-- CÓMO FUNCIONA -->
+<!-- CÓMO FUNCIONA - CARRUSEL DE IMÁGENES -->
 <section class="st-how-section">
   <!-- Partículas decorativas de fondo -->
   <div class="particles-container how-particles">
@@ -63,67 +63,49 @@
       <p class="st-section-desc">Accede a tus redes favoritas mientras disfrutas tu comida sin perder un solo momento.</p>
     </div>
 
-    <div class="how-layout">
-      <!-- Tabs -->
-      <div class="how-tabs reveal-left">
-        <div *ngFor="let step of steps; let i = index"
-             class="how-tab"
-             [class.active]="i === currentStep"
-             (click)="goToStep(i)">
-          <div class="tab-num">{{ step.number }}</div>
-          <div class="tab-body">
-            <div class="tab-icon">{{ step.icon }}</div>
-            <div class="tab-title">{{ step.title }}</div>
-          </div>
-          <div class="tab-arrow">›</div>
-        </div>
+    <!-- Carrusel -->
+    <div class="how-carousel reveal-up" style="animation-delay:100ms">
+      <!-- Badge fuera de la imagen -->
+      <div class="carousel-step-badge">
+        <span class="step-badge">Paso {{ currentStep + 1 }} / {{ steps.length }}</span>
       </div>
 
-      <!-- Mockup display con imagen -->
-      <div class="how-mockup reveal-right">
-        <div class="mockup-window">
-          <div class="window-bar">
-            <div class="window-dots">
-              <span class="dot red"></span>
-              <span class="dot yellow"></span>
-              <span class="dot green"></span>
-            </div>
-            <div class="window-title">SmartTable · {{ steps[currentStep].title }}</div>
+      <div class="carousel-container">
+        <button class="carousel-btn prev" (click)="prevStep()" [disabled]="currentStep === 0">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+
+        <div class="carousel-slide">
+          <div class="carousel-image-wrapper">
+            <img 
+              [src]="'/funcion/como-funciona-' + (currentStep + 1) + '.png'" 
+              [alt]="steps[currentStep].title"
+              (error)="onImageError($event)"
+              class="carousel-image"
+            />
           </div>
-          <div class="mockup-body">
-            <!-- Imagen del paso actual -->
-            <div class="mockup-image">
-              <img 
-                [src]="'/como-funciona-' + (currentStep + 1) + '.png'" 
-                [alt]="steps[currentStep].title"
-                (error)="onImageError($event)"
-              />
-              <div class="image-overlay">
-                <span class="step-badge">{{ steps[currentStep].number }}</span>
-              </div>
-            </div>
-            <div class="mockup-content">
-              <h3>{{ steps[currentStep].title }}</h3>
-              <p>{{ steps[currentStep].desc }}</p>
-            </div>
-            <div class="step-dots">
-              <span *ngFor="let s of steps; let i = index"
-                    class="step-dot"
-                    [class.active]="i === currentStep"
-                    (click)="goToStep(i)">
-              </span>
-            </div>
+          <div class="carousel-content">
+            <h3>{{ steps[currentStep].title }}</h3>
+            <p>{{ steps[currentStep].desc }}</p>
           </div>
         </div>
-        <div class="how-controls">
-          <button class="ctrl-btn" (click)="prevStep()" [disabled]="currentStep === 0">
-            ← Anterior
-          </button>
-          <span class="ctrl-count">{{ currentStep + 1 }} / {{ steps.length }}</span>
-          <button class="ctrl-btn primary" (click)="nextStep()" [disabled]="currentStep === steps.length - 1">
-            Siguiente →
-          </button>
-        </div>
+
+        <button class="carousel-btn next" (click)="nextStep()" [disabled]="currentStep === steps.length - 1">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Dots de navegación -->
+      <div class="carousel-dots">
+        <span *ngFor="let s of steps; let i = index"
+              class="carousel-dot"
+              [class.active]="i === currentStep"
+              (click)="goToStep(i)">
+        </span>
       </div>
     </div>
   </div>

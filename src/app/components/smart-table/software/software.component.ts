@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface Step {
-  number: string;
-  icon: string;
   title: string;
   desc: string;
 }
@@ -22,50 +20,34 @@ export class StSoftwareComponent {
 
   steps: Step[] = [
     {
-      number: '01',
-      icon: '📱',
-      title: 'Menú Completo',
-      desc: 'Accede a mensajes, redes sociales y todo el contenido desde un solo lugar.'
+      title: 'Inicio',
+      desc: 'En esta pantalla, elige la opción Cliente para acceder al menú y comenzar tu pedido.'
     },
     {
-      number: '02',
-      icon: '🌐',
-      title: 'Redes Sociales',
-      desc: 'Conecta a tus redes en redes sociales de tu comunidad.'
+      title: 'Seleccione',
+      desc: 'Ingresa el número de tu mesa y haz clic en "Ver Menú" para continuar.'
     },
     {
-      number: '03',
-      icon: '📘',
-      title: 'Facebook',
-      desc: 'Conecta con amigos y familia mientras disfrutas tu comida.'
+      title: 'Elige',
+      desc: 'Revisa el menú disponible y elige los productos de tu preferencia para agregarlos al pedido.'
     },
     {
-      number: '04',
-      icon: '📸',
       title: 'Instagram',
       desc: 'Comparte fotos y momentos especiales desde tu mesa.'
     },
     {
-      number: '05',
-      icon: '🎵',
       title: 'TikTok',
       desc: 'Vemos cosas y elementos divertidos mientras esperas tu pedido.'
     },
     {
-      number: '06',
-      icon: '🐦',
       title: 'Twitter / X',
       desc: 'Música y contenido actualizado en tiempo real.'
     },
     {
-      number: '07',
-      icon: '▶️',
       title: 'YouTube',
       desc: 'Vemos y entretienemos con tus videos favoritos.'
     },
     {
-      number: '08',
-      icon: '🎬',
       title: 'Netflix',
       desc: 'Series y películas para disfrutar mientras comes.'
     }
@@ -95,7 +77,7 @@ export class StSoftwareComponent {
       const fallback = document.createElement('div');
       fallback.style.cssText = `
         width: 100%;
-        height: 100%;
+        height: 300px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -103,8 +85,17 @@ export class StSoftwareComponent {
         color: white;
         font-size: 48px;
         font-weight: 900;
+        opacity: 0.8;
+        text-align: center;
+        padding: 20px;
       `;
-      fallback.textContent = this.steps[this.currentStep].icon;
+      fallback.innerHTML = `
+        <div>
+          <div style="font-size: 56px; margin-bottom: 12px;">📱</div>
+          <div style="font-size: 18px; font-weight: 700;">${this.steps[this.currentStep].title}</div>
+          <div style="font-size: 14px; font-weight: 400; opacity: 0.6; margin-top: 8px;">Imagen no disponible</div>
+        </div>
+      `;
       parent.appendChild(fallback);
     }
   }

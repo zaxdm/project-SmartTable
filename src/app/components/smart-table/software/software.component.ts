@@ -20,36 +20,36 @@ export class StSoftwareComponent {
 
   steps: Step[] = [
     {
-      title: 'Inicio',
-      desc: 'En esta pantalla, elige la opción Cliente para acceder al menú y comenzar tu pedido.'
+      title: 'Selecciona la opción Cliente',
+      desc: 'En la pantalla de inicio, elige la opción Cliente para acceder al menú y comenzar tu pedido.'
     },
     {
-      title: 'Seleccione',
+      title: 'Elige tu número de mesa',
       desc: 'Ingresa el número de tu mesa y haz clic en "Ver Menú" para continuar.'
     },
     {
-      title: 'Elige',
+      title: 'Explora el menú y selecciona tus productos',
       desc: 'Revisa el menú disponible y elige los productos de tu preferencia para agregarlos al pedido.'
     },
     {
-      title: 'Instagram',
-      desc: 'Comparte fotos y momentos especiales desde tu mesa.'
+      title: 'Realiza tu pedido',
+      desc: 'Revisa los productos en tu carrito, ajusta cantidades y haz clic en "Realizar pedido" para enviarlo a cocina.'
     },
     {
-      title: 'TikTok',
-      desc: 'Vemos cosas y elementos divertidos mientras esperas tu pedido.'
+      title: 'Realiza tu pago',
+      desc: 'Selecciona tu método de pago favorito (Yape, Plin, BCP, Interbank, Visa/Mastercard o Efectivo) y completa tu compra de forma segura.'
     },
     {
-      title: 'Twitter / X',
-      desc: 'Música y contenido actualizado en tiempo real.'
+      title: 'Configura tu menú',
+      desc: 'Personaliza la forma en que ves el menú ajustando el modo día/noche, brillo y volumen según tu preferencia.'
     },
     {
-      title: 'YouTube',
-      desc: 'Vemos y entretienemos con tus videos favoritos.'
+      title: 'Zona de juegos',
+      desc: 'Mientras esperas tu pedido, diviértete con nuestra zona de juegos integrada en la mesa.'
     },
     {
-      title: 'Netflix',
-      desc: 'Series y películas para disfrutar mientras comes.'
+      title: 'Conéctate a tus redes sociales',
+      desc: 'Accede a tus redes favoritas mientras disfrutas tu comida sin perder un solo momento.'
     }
   ];
 

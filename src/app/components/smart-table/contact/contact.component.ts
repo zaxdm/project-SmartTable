@@ -18,7 +18,7 @@ export class StContactComponent {
   ];
 
   openWhatsApp() {
-    const msg = encodeURIComponent('Hola SmartTable, me interesa conocer más sobre las mesas táctiles interactivas.');
+    const msg = encodeURIComponent('Hola SmarTable, me interesa conocer más sobre las mesas táctiles interactivas.');
     window.open(`https://wa.me/51993981844?text=${msg}`, '_blank');
   }
 }

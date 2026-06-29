@@ -302,7 +302,27 @@
 
 .sw-card-screen {
   aspect-ratio: 16/9;
-  background: linear-gradient(135deg, #0a1628, #1a3a5c);
+
+  background-image: url('/software-menu-CLQd-ndc.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 16px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.sw-card-screen2{
+    aspect-ratio: 16/9;
+
+  background-image: url('/software-order-SE8QZQhJ.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   border-radius: 16px;
   margin-bottom: 20px;
   position: relative;

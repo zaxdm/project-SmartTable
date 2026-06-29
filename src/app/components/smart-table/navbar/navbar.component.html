@@ -1,7 +1,7 @@
 <header class="st-navbar" [class.scrolled]="scrolled">
   <div class="st-nav-inner">
 
-    <div class="st-logo-area">
+    <a routerLink="/" class="st-logo-area">
       <div class="st-logo-box">
         <img 
           src="logo-smart.png" 
@@ -13,7 +13,7 @@
         <div class="logo-pulse"></div>
       </div>
       <span class="st-logo-text">Smart<span class="st-highlight">Table</span></span>
-    </div>
+    </a>
 
     <nav class="st-nav-links" [class.open]="menuOpen">
 <a *ngFor="let link of navLinks; let i = index"

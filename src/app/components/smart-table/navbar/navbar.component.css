@@ -95,6 +95,8 @@
   position: relative;
   transition: color 0.2s;
   animation: fade-down 0.4s both;
+    cursor: pointer;
+  user-select: none;
 }
 
 @keyframes fade-down {

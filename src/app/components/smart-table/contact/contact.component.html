@@ -1,11 +1,29 @@
 <section id="contacto" class="st-contact-section">
+  <!-- Partículas decorativas de fondo -->
+  <div class="particles-container">
+    <div class="particle" *ngFor="let p of particles"></div>
+  </div>
+  
+  <!-- Burbujas flotantes -->
+  <div class="bubbles-container">
+    <div class="bubble" *ngFor="let b of bubbles"></div>
+  </div>
+
+  <!-- Formas geométricas flotantes -->
+  <div class="floating-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+  </div>
+
   <div class="contact-orb contact-orb-1"></div>
   <div class="contact-orb contact-orb-2"></div>
 
   <div class="st-container st-contact-grid">
 
     <div class="contact-left reveal-left">
-      <span class="st-section-tag">CONTÁCTANOS</span>
+      <span class="st-section-tag">✦ CONTÁCTANOS</span>
       <h2 class="st-section-title">Lleva SmartTable a tu <span class="accent-word">restaurante</span></h2>
       <p class="st-section-desc">
         Cuéntanos sobre tu restaurante y te enviaremos una propuesta personalizada. Listos para responderte por WhatsApp o redes sociales.
@@ -25,7 +43,6 @@
     </div>
 
     <div class="contact-right reveal-right">
-      <!-- NOTA: se agregó .st-contact-box-inner para soportar el borde de luz animado -->
       <div class="st-contact-box">
         <div class="st-contact-box-inner">
           <div class="box-header">

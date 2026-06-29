@@ -9,12 +9,15 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./contact.component.css']
 })
 export class StContactComponent {
+  particles = Array(10).fill(0);
+  bubbles = Array(8).fill(0);
+
   contactInfo = [
     { icon: '📍', label: 'Dónde estamos', value: 'Piura, Perú' },
     { icon: '📞', label: 'WhatsApp', value: '+51 993 981 844' }
   ];
 
   openWhatsApp() {
-    window.open('https://wa.me/51993981844', '_blank');
+    window.open('https://wa.me/51950883156', '_blank');
   }
 }

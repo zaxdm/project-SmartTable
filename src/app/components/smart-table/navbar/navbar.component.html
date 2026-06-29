@@ -16,13 +16,14 @@
     </div>
 
     <nav class="st-nav-links" [class.open]="menuOpen">
-      <a *ngFor="let link of navLinks; let i = index"
-         [href]="link.href"
-         class="nav-link"
-         [style.animation-delay]="i * 60 + 'ms'"
-         (click)="menuOpen = false">
-        {{ link.label }}
-      </a>
+<a *ngFor="let link of navLinks; let i = index"
+  class="nav-link"
+  [routerLink]="link.type === 'route' ? link.href : null"
+  [attr.href]="link.type === 'scroll' ? '#' + link.href : null"
+  (click)="onNavClick($event, link)"
+  [style.animation-delay]="i * 60 + 'ms'">
+  {{ link.label }}
+</a>
     </nav>
 
     <div class="st-nav-right">

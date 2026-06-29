@@ -1,15 +1,23 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { StNavbarComponent } from '../navbar/navbar.component';
+
+interface AboutCard {
+  icon: string;
+  label: string;
+  text: string;
+}
 
 @Component({
   selector: 'app-st-about',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, StNavbarComponent],
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
 export class StAboutComponent {
-  cards = [
+  cards: AboutCard[] = [
     {
       icon: '🎯',
       label: 'Misión',
@@ -31,3 +39,4 @@ export class StAboutComponent {
     window.open('https://wa.me/51993981844', '_blank');
   }
 }
+

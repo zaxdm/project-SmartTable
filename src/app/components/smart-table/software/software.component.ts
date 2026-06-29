@@ -1,6 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+interface Step {
+  number: string;
+  icon: string;
+  title: string;
+  desc: string;
+}
+
 @Component({
   selector: 'app-st-software',
   standalone: true,
@@ -9,48 +16,50 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./software.component.css']
 })
 export class StSoftwareComponent {
-  currentStep = 0;
+  particles = Array(10).fill(0);
 
-  steps = [
+  currentStep: number = 0;
+
+  steps: Step[] = [
     {
-      number: 1,
+      number: '01',
+      icon: '📱',
       title: 'Explora el menú',
-      desc: 'Los clientes navegan el menú interactivo con fotos, descripciones y precios en tiempo real desde la mesa.',
-      icon: '🍽️'
+      desc: 'Los comensales navegan por el menú digital con fotos, descripciones y precios actualizados al instante.'
     },
     {
-      number: 2,
-      title: 'Personaliza tu orden',
-      desc: 'Agrega notas especiales, selecciona extras y personaliza cada plato según tus preferencias.',
-      icon: '✏️'
+      number: '02',
+      icon: '🛒',
+      title: 'Arma tu pedido',
+      desc: 'Seleccionan los platos, personalizan ingredientes y envían el pedido directamente a cocina con un solo toque.'
     },
     {
-      number: 3,
-      title: 'Revisa tu carrito',
-      desc: 'Visualiza todos los items seleccionados, ajusta cantidades y verifica el total antes de confirmar.',
-      icon: '🛒'
+      number: '03',
+      icon: '👨‍🍳',
+      title: 'Cocina en tiempo real',
+      desc: 'El pedido llega a la cocina con todos los detalles, reduciendo errores y tiempos de espera.'
     },
     {
-      number: 4,
-      title: 'Realiza el pedido',
-      desc: 'Con un toque el pedido viaja directo a cocina. Sin esperas, sin errores, sin fricción.',
-      icon: '🚀'
+      number: '04',
+      icon: '✅',
+      title: 'Confirma y disfruta',
+      desc: 'El cliente recibe confirmación del pedido y puede ver el tiempo estimado de preparación.'
     }
   ];
 
-  nextStep() {
+  goToStep(index: number): void {
+    this.currentStep = index;
+  }
+
+  nextStep(): void {
     if (this.currentStep < this.steps.length - 1) {
       this.currentStep++;
     }
   }
 
-  prevStep() {
+  prevStep(): void {
     if (this.currentStep > 0) {
       this.currentStep--;
     }
-  }
-
-  goToStep(index: number) {
-    this.currentStep = index;
   }
 }

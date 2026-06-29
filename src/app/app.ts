@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { SmartTableLandingComponent } from './components/smart-table/smart-table.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [SmartTableLandingComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

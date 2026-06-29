@@ -2,14 +2,16 @@
 
   <!-- Video de fondo: reemplaza la ruta del src por la del video real.
        El poster se muestra mientras el video carga (recomendado para mejorar LCP). -->
-  <video
-    class="hero-video-bg"
-    autoplay
-    muted
-    loop
-    playsinline>
-    <source src="fondo.mp4" type="video/mp4">
-  </video>
+<video
+  #heroVideo
+  class="hero-video-bg"
+  autoplay
+  muted
+  loop
+  playsinline
+  preload="auto">
+  <source src="/fondo.mp4" type="video/mp4">
+</video>
 
   <!-- Overlay oscuro para que el texto siga siendo legible sobre el video -->
   <div class="hero-video-overlay"></div>

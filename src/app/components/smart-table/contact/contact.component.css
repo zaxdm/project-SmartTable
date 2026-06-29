@@ -7,40 +7,210 @@
    ============================================ */
 .st-contact-section {
   position: relative;
-  background: linear-gradient(160deg, #0c2340 0%, #0f3460 100%);
+  background: linear-gradient(160deg, #0a1a3a 0%, #0f2a5a 30%, #1a3a6a 60%, #0f2a4a 100%);
+  background-size: 300% 300%;
+  animation: bg-shift 15s ease-in-out infinite;
   padding: 110px 0 0;
   overflow: hidden;
+  min-height: 100vh;
+}
 
-  /* Textura de tablero — líneas finas casi imperceptibles */
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: repeating-linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.025) 0px,
-      rgba(255, 255, 255, 0.025) 1px,
-      transparent 1px,
-      transparent 26px
-    );
-    pointer-events: none;
+@keyframes bg-shift {
+  0%, 100% { background-position: 0% 50%; }
+  33% { background-position: 100% 0%; }
+  66% { background-position: 50% 100%; }
+}
+
+/* ─── PARTÍCULAS DE FONDO ─── */
+.particles-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(249,115,22,0.3));
+  border-radius: 50%;
+  opacity: 0;
+  animation: particle-float 14s infinite linear;
+}
+
+.particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; width: 8px; height: 8px; }
+.particle:nth-child(2) { left: 25%; top: 60%; animation-delay: 2s; width: 4px; height: 4px; opacity: 0.5; }
+.particle:nth-child(3) { left: 45%; top: 10%; animation-delay: 4s; width: 10px; height: 10px; }
+.particle:nth-child(4) { left: 65%; top: 70%; animation-delay: 1s; width: 5px; height: 5px; }
+.particle:nth-child(5) { left: 80%; top: 30%; animation-delay: 3s; width: 7px; height: 7px; opacity: 0.6; }
+.particle:nth-child(6) { left: 15%; top: 85%; animation-delay: 5s; width: 9px; height: 9px; }
+.particle:nth-child(7) { left: 55%; top: 45%; animation-delay: 2.5s; width: 4px; height: 4px; opacity: 0.4; }
+.particle:nth-child(8) { left: 90%; top: 55%; animation-delay: 3.5s; width: 6px; height: 6px; }
+.particle:nth-child(9) { left: 35%; top: 25%; animation-delay: 1.5s; width: 8px; height: 8px; opacity: 0.7; }
+.particle:nth-child(10) { left: 70%; top: 15%; animation-delay: 4.5s; width: 5px; height: 5px; }
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(0) translateX(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+    transform: translateY(-25px) translateX(12px) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-120px) translateX(-25px) scale(1.2);
+  }
+  90% {
+    opacity: 0.8;
+    transform: translateY(-220px) translateX(18px) scale(0.8);
+  }
+  100% {
+    transform: translateY(-280px) translateX(0) scale(0);
+    opacity: 0;
+  }
+}
+
+/* ─── BURBUJAS FLOTANTES ─── */
+.bubbles-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.05);
+  animation: bubble-float var(--duration) ease-in-out infinite;
+}
+
+.bubble:nth-child(1) { width: 60px; height: 60px; left: 5%; bottom: -30px; --duration: 8s; animation-delay: 0s; }
+.bubble:nth-child(2) { width: 100px; height: 100px; left: 20%; bottom: -50px; --duration: 10s; animation-delay: 1.5s; }
+.bubble:nth-child(3) { width: 40px; height: 40px; right: 10%; bottom: -20px; --duration: 7s; animation-delay: 3s; }
+.bubble:nth-child(4) { width: 80px; height: 80px; right: 25%; bottom: -40px; --duration: 9s; animation-delay: 0.8s; }
+.bubble:nth-child(5) { width: 50px; height: 50px; left: 50%; bottom: -25px; --duration: 11s; animation-delay: 2.2s; }
+.bubble:nth-child(6) { width: 120px; height: 120px; left: 70%; bottom: -60px; --duration: 12s; animation-delay: 4s; }
+.bubble:nth-child(7) { width: 35px; height: 35px; left: 8%; bottom: -15px; --duration: 6s; animation-delay: 5s; }
+.bubble:nth-child(8) { width: 70px; height: 70px; right: 45%; bottom: -35px; --duration: 8.5s; animation-delay: 1.2s; }
+
+@keyframes bubble-float {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.5);
+    opacity: 0.3;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  30% {
+    transform: translateY(-100px) translateX(20px) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-200px) translateX(-15px) scale(1.1);
+    opacity: 0.9;
+  }
+  70% {
+    transform: translateY(-300px) translateX(25px) scale(0.9);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-400px) translateX(-10px) scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* ─── FORMAS GEOMÉTRICAS FLOTANTES ─── */
+.floating-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.05;
+  animation: shape-float 25s infinite ease-in-out;
+}
+
+.shape-1 {
+  width: 350px;
+  height: 350px;
+  background: linear-gradient(135deg, #d96b43, #f97316);
+  top: -80px;
+  left: -120px;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(135deg, #1a3a5c, #0284c7);
+  bottom: -40px;
+  right: -60px;
+  animation-delay: 3.5s;
+  border-radius: 30% 70% 50% 50% / 30% 30% 70% 70%;
+}
+
+.shape-3 {
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(135deg, #f97316, #fbbf24);
+  top: 45%;
+  right: 5%;
+  animation-delay: 6.5s;
+  border-radius: 40% 60% 30% 70% / 50% 40% 60% 50%;
+}
+
+.shape-4 {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #0284c7, #1d4ed8);
+  bottom: 25%;
+  left: 3%;
+  animation-delay: 2.2s;
+  border-radius: 60% 40% 70% 30% / 40% 60% 40% 60%;
+}
+
+@keyframes shape-float {
+  0%, 100% { 
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% { 
+    transform: translate(35px, -45px) rotate(90deg) scale(1.1);
+  }
+  50% { 
+    transform: translate(-25px, -90px) rotate(180deg) scale(0.9);
+  }
+  75% { 
+    transform: translate(45px, -30px) rotate(270deg) scale(1.05);
   }
 }
 
 .contact-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.2;
+  filter: blur(120px);
+  opacity: 0.15;
   pointer-events: none;
   animation: orb-drift 14s ease-in-out infinite;
+  z-index: 0;
 }
-.contact-orb-1 { width: 450px; height: 450px; top: -100px; left: -80px; background: #0284c7; }
-.contact-orb-2 { width: 380px; height: 380px; bottom: 80px; right: -60px; background: #d96b43; animation-delay: -7s; }
+.contact-orb-1 { width: 500px; height: 500px; top: -120px; left: -100px; background: #f97316; }
+.contact-orb-2 { width: 400px; height: 400px; bottom: 60px; right: -80px; background: #0284c7; animation-delay: -7s; }
 
 @keyframes orb-drift {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  50%      { transform: translate(30px, -20px) scale(1.08); }
+  50%      { transform: translate(40px, -30px) scale(1.08); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -48,7 +218,7 @@
 }
 
 /* ============================================
-   SCROLL REVEAL — orquestado, no solo fade
+   SCROLL REVEAL
    ============================================ */
 .reveal-left {
   opacity: 0;
@@ -81,33 +251,40 @@
 }
 
 /* ============================================
-   LEFT COLUMN — texto
+   LEFT COLUMN
    ============================================ */
 .st-section-tag {
   font-size: 11px;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   color: #f97316;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
+  display: inline-block;
+  margin-bottom: 12px;
+  position: relative;
+}
 
-  &::before {
-    content: '';
-    width: 16px;
-    height: 2px;
-    background: #f97316;
-    border-radius: 2px;
-  }
+.st-section-tag::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #f97316, transparent);
+  animation: tag-line 2s ease-in-out infinite;
+}
+
+@keyframes tag-line {
+  0%, 100% { transform: scaleX(1); opacity: 1; }
+  50% { transform: scaleX(0.3); opacity: 0.3; }
 }
 
 .st-section-title {
-  font-size: clamp(26px, 3.5vw, 40px);
+  font-size: clamp(28px, 3.5vw, 42px);
   font-weight: 900;
   color: white;
-  line-height: 1.2;
+  line-height: 1.15;
   margin: 0 0 16px 0;
   letter-spacing: -1px;
 }
@@ -117,21 +294,34 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  position: relative;
+  display: inline-block;
 }
+.accent-word::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f97316, #fbbf24);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: underline-grow 0.8s 0.6s ease forwards;
+}
+@keyframes underline-grow { to { transform: scaleX(1); } }
 
 .st-section-desc {
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 15px;
-  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  line-height: 1.8;
   margin-bottom: 44px;
   max-width: 440px;
 }
 
 /* ============================================
-   CONTACT LIST — sin cajas, estilo editorial
-   Cada fila es una línea de datos sobre el fondo,
-   separada por un hairline, con movimiento real
-   al pasar el cursor (no solo cambio de color).
+   CONTACT LIST
    ============================================ */
 .st-contact-info-list {
   display: flex;
@@ -144,23 +334,22 @@
   align-items: center;
   gap: 22px;
   padding: 22px 4px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   opacity: 0;
   animation: row-settle 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   cursor: default;
   transition: padding-left 0.35s ease;
 
   &:last-child {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  /* Línea de acento que crece desde abajo, como un cursor encendiéndose */
   &::after {
     content: '';
     position: absolute;
     left: 0;
     bottom: -1px;
-    height: 1px;
+    height: 2px;
     width: 0;
     background: linear-gradient(90deg, #f97316, #fbbf24);
     transition: width 0.45s ease;
@@ -176,7 +365,7 @@
       color: #f97316;
     }
 
-    .st-contact-item p {
+    p {
       color: #fbbf24;
     }
   }
@@ -186,7 +375,6 @@
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Ícono suelto, sin contenedor — grande, parte del texto */
 .contact-icon-wrap {
   font-size: 26px;
   line-height: 1;
@@ -213,7 +401,7 @@
 }
 
 /* ============================================
-   RIGHT COLUMN — panel "encendido", no card corporativa
+   RIGHT COLUMN
    ============================================ */
 .contact-right {
   position: relative;
@@ -222,21 +410,26 @@
 
 .st-contact-box {
   position: relative;
-  border-radius: 24px;
-  padding: 2.5px; /* hueco para el borde animado */
+  border-radius: 28px;
+  padding: 3px;
   background: linear-gradient(
     115deg,
     #f97316 0%,
-    #fbbf24 16%,
-    rgba(255, 255, 255, 0.12) 34%,
-    rgba(255, 255, 255, 0.12) 66%,
-    #d96b43 84%,
+    #fbbf24 20%,
+    rgba(255, 255, 255, 0.15) 40%,
+    rgba(255, 255, 255, 0.15) 60%,
+    #d96b43 80%,
     #f97316 100%
   );
-  background-size: 250% 250%;
+  background-size: 300% 300%;
   animation: border-sweep 6s ease-in-out infinite;
-  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
+.st-contact-box:hover {
+  transform: translateY(-4px);
+}
+
 @keyframes border-sweep {
   0%, 100% { background-position: 0% 50%; }
   50%      { background-position: 100% 50%; }
@@ -244,9 +437,10 @@
 
 .st-contact-box-inner {
   position: relative;
-  background: #ffffff;
-  border-radius: 22px;
-  padding: 42px 38px 38px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-radius: 26px;
+  padding: 44px 40px 40px;
 }
 
 .box-header { margin-bottom: 16px; }
@@ -255,39 +449,40 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #fff7ed;
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
   border: 1px solid #fed7aa;
   color: #d96b43;
   font-size: 12px;
   font-weight: 700;
-  padding: 5px 14px;
+  padding: 6px 16px;
   border-radius: 50px;
 }
 
 .st-contact-box h3 {
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 900;
   color: #0c2340;
   margin: 0 0 10px 0;
+  letter-spacing: -0.5px;
 }
 .st-contact-box p {
-  font-size: 13.5px;
+  font-size: 14px;
   color: #718096;
-  line-height: 1.6;
-  margin-bottom: 26px;
+  line-height: 1.7;
+  margin-bottom: 28px;
 }
 
-/* Botón WhatsApp — el elemento físico, con peso real */
+/* Botón WhatsApp */
 .st-btn-wp {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: linear-gradient(90deg, #16a34a, #22c55e);
+  background: linear-gradient(135deg, #16a34a, #22c55e);
   border: none;
   color: white;
-  padding: 17px;
+  padding: 18px;
   font-size: 15.5px;
   font-weight: 800;
   border-radius: 50px;
@@ -295,8 +490,8 @@
   font-family: inherit;
   position: relative;
   overflow: hidden;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
-  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.4);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 8px 28px rgba(34, 197, 94, 0.35);
   margin-bottom: 16px;
 
   svg {
@@ -310,26 +505,21 @@
     left: -75%;
     width: 50%;
     height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     transform: skewX(-20deg);
     transition: left 0.6s ease;
   }
 
   &:hover {
-    transform: translateY(-4px) scale(1.015);
-    box-shadow: 0 14px 34px rgba(34, 197, 94, 0.55);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 14px 40px rgba(34, 197, 94, 0.5);
 
     &::before { left: 125%; }
     svg { transform: rotate(-8deg) scale(1.1); }
   }
 
   &:active {
-    transform: translateY(-1px) scale(0.99);
-  }
-
-  &:focus-visible {
-    outline: 2px solid #0c2340;
-    outline-offset: 3px;
+    transform: translateY(-1px) scale(0.98);
   }
 }
 
@@ -343,17 +533,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
+  gap: 8px;
   background: transparent;
   border: 1.5px solid #e2e8f0;
   color: #4a5568;
-  padding: 11px;
+  padding: 12px;
   font-size: 13px;
   font-weight: 700;
   border-radius: 50px;
   cursor: pointer;
   font-family: inherit;
-  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 
   span {
     transition: transform 0.3s ease;
@@ -363,14 +553,10 @@
   &:hover {
     border-color: #0c2340;
     color: #0c2340;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 16px rgba(12,35,64,0.06);
 
     span { transform: scale(1.2) rotate(-6deg); }
-  }
-
-  &:focus-visible {
-    outline: 2px solid #0c2340;
-    outline-offset: 3px;
   }
 }
 
@@ -380,8 +566,10 @@
 .footer-strip {
   position: relative;
   z-index: 1;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
   padding: 24px 0;
+  background: rgba(0,0,0,0.15);
+  backdrop-filter: blur(8px);
 }
 .footer-strip-inner {
   display: flex;
@@ -393,24 +581,36 @@
 .footer-logo {
   font-size: 18px;
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.6);
-
-  span { color: #d96b43; }
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.3s ease;
 }
+.footer-logo:hover { color: rgba(255,255,255,0.8); }
+.footer-logo span { color: #d96b43; }
 .footer-copy {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 /* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 860px) {
-  .st-contact-grid { grid-template-columns: 1fr; gap: 56px; }
-  .footer-strip-inner { justify-content: center; text-align: center; }
+  .st-contact-grid { 
+    grid-template-columns: 1fr; 
+    gap: 56px; 
+  }
+  .footer-strip-inner { 
+    justify-content: center; 
+    text-align: center; 
+  }
+  .floating-shapes { display: none; }
+  .particles-container { display: none; }
+  .bubbles-container { display: none; }
 }
 
 @media (max-width: 480px) {
-  .st-contact-box-inner { padding: 36px 26px 30px; }
+  .st-contact-box-inner { padding: 32px 22px 28px; }
   .st-contact-item p { font-size: 17px; }
+  .st-social-row { grid-template-columns: 1fr; }
+  .st-contact-section { padding: 80px 0 0; }
 }

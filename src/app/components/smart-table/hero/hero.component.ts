@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.css']
 })
-export class StHeroComponent {
+export class StHeroComponent  {
   stats = [
     { value: '+40%', label: 'Pedidos', sublabel: 'más rápidos' },
     { value: '100%', label: 'Software', sublabel: 'personalizable' },

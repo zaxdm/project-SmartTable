@@ -1,0 +1,27 @@
+/* ============================================
+   FOOTER STRIP
+   ============================================ */
+.footer-strip {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 24px 0;
+}
+.footer-strip-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.footer-logo {
+  font-size: 18px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.6);
+
+  span { color: #d96b43; }
+}
+.footer-copy {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+}

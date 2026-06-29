@@ -1,0 +1,71 @@
+<section id="quienes-somos-section" class="about-section">
+
+  <!-- Orbs de fondo -->
+  <div class="about-orb about-orb-1"></div>
+  <div class="about-orb about-orb-2"></div>
+  <div class="about-orb about-orb-3"></div>
+
+  <div class="about-container">
+
+    <!-- Breadcrumb -->
+    <div class="about-breadcrumb reveal-up">
+      <a href="#quienes-somos" class="breadcrumb-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Volver al inicio
+      </a>
+    </div>
+
+    <!-- Header -->
+    <div class="about-header reveal-up" style="animation-delay:80ms">
+      <span class="section-eyebrow">¿QUIÉNES SOMOS?</span>
+      <h2 class="about-title">
+        Innovación tecnológica al servicio<br>
+        de la <span class="about-gradient">gastronomía</span>
+      </h2>
+      <p class="about-intro">
+        SmartTable es una empresa especializada en mesas táctiles interactivas para restaurantes. Desarrollamos soluciones tecnológicas que optimizan la gestión de pedidos, mejoran la eficiencia operativa y ayudan a los restaurantes a ofrecer un servicio innovador y diferenciado.
+      </p>
+    </div>
+
+    <!-- Cards Misión / Visión / Propuesta -->
+    <div class="about-cards">
+      <div
+        *ngFor="let card of cards; let i = index"
+        class="about-card reveal-up"
+        [style.animation-delay]="(160 + i * 100) + 'ms'">
+        <div class="card-icon-wrap">
+          <span class="card-icon">{{ card.icon }}</span>
+          <div class="card-icon-glow"></div>
+        </div>
+        <h3 class="card-label">{{ card.label }}</h3>
+        <p class="card-text">{{ card.text }}</p>
+      </div>
+    </div>
+
+    <!-- CTA final -->
+    <div class="about-cta reveal-up" style="animation-delay:500ms">
+      <div class="cta-inner">
+        <div class="cta-left">
+          <span class="cta-badge">✨ Demo gratuita</span>
+          <h3>¿Quieres conocer más sobre SmartTable?</h3>
+          <p>Escríbenos por WhatsApp y agenda una demostración gratuita de nuestra mesa táctil y software interactivo.</p>
+        </div>
+        <div class="cta-right">
+          <button class="btn-whatsapp" (click)="openWhatsApp()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.532 5.855L0 24l6.335-1.524A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.028-1.384l-.36-.214-3.732.898.936-3.629-.235-.373A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/>
+            </svg>
+            Hablar por WhatsApp
+          </button>
+          <a href="#quienes-somos" class="btn-back">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Volver al inicio
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

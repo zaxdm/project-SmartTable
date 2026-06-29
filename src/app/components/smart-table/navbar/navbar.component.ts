@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 })
 export class StNavbarComponent {
   navLinks = [
-    { label: '¿Quiénes somos?', href: '#quienes-somos' },
+    { label: '¿Quiénes somos?', href: '#quienes-somos-section' },
     { label: 'Producto', href: '#producto' },
     { label: 'Software', href: '#software' },
     { label: 'Beneficios', href: '#beneficios' },

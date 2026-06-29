@@ -1,10 +1,23 @@
 <section id="software" class="st-software-section">
+  <!-- Partículas decorativas de fondo -->
+  <div class="particles-container">
+    <div class="particle" *ngFor="let p of particles"></div>
+  </div>
+  
+  <!-- Formas geométricas flotantes -->
+  <div class="floating-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+  </div>
+
   <div class="sw-bg-orb sw-orb-1"></div>
   <div class="sw-bg-orb sw-orb-2"></div>
 
   <div class="st-container">
     <div class="sw-header reveal-up">
-      <span class="st-section-tag">SOFTWARE A MEDIDA</span>
+      <span class="st-section-tag">✦ SOFTWARE A MEDIDA</span>
       <h2 class="st-section-title">Un software intuitivo, <span class="accent-gradient">totalmente editable</span></h2>
       <p class="st-section-desc">
         Cada mesa SmartTable incluye un software diseñado para restaurantes. Tus clientes exploran el menú, arman su pedido y lo envían a cocina sin esperar. Adaptamos categorías, fotografías, precios y promociones.
@@ -14,13 +27,13 @@
     <div class="sw-cards-grid reveal-up" style="animation-delay:100ms">
       <div class="sw-card">
         <div class="sw-card-icon">🍽️</div>
-        <div class="sw-card-screen"></div>
+        <div class="sw-card-screen" style="background-image: url('/software-menu-CLQd-ndc.jpg');"></div>
         <h3>Menú interactivo</h3>
         <p>Categorías, fotos y descripciones de cada plato al alcance de un toque.</p>
       </div>
       <div class="sw-card">
         <div class="sw-card-icon">⚡</div>
-        <div class="sw-card-screen2"></div>
+        <div class="sw-card-screen" style="background-image: url('/software-order-SE8QZQhJ.jpg');"></div>
         <h3>Pedidos en tiempo real</h3>
         <p>El pedido viaja directo a cocina, reduciendo tiempos y errores en el servicio.</p>
       </div>
@@ -30,10 +43,24 @@
 
 <!-- CÓMO FUNCIONA -->
 <section class="st-how-section">
+  <!-- Partículas decorativas de fondo -->
+  <div class="particles-container how-particles">
+    <div class="particle" *ngFor="let p of particles"></div>
+  </div>
+  
+  <!-- Formas geométricas flotantes -->
+  <div class="floating-shapes how-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+  </div>
+
   <div class="st-container">
     <div class="how-header reveal-up">
-      <span class="st-section-tag orange">CÓMO FUNCIONA</span>
-      <h2 class="st-section-title light">Una experiencia simple, paso a paso</h2>
+      <span class="st-section-tag orange">✦ CÓMO FUNCIONA</span>
+      <h2 class="st-section-title light">Conéctate a tus redes <span class="accent-gradient">sociales</span></h2>
+      <p class="st-section-desc">Accede a tus redes favoritas mientras disfrutas tu comida sin perder un solo momento.</p>
     </div>
 
     <div class="how-layout">
@@ -52,7 +79,7 @@
         </div>
       </div>
 
-      <!-- Mockup display -->
+      <!-- Mockup display con imagen -->
       <div class="how-mockup reveal-right">
         <div class="mockup-window">
           <div class="window-bar">
@@ -64,9 +91,21 @@
             <div class="window-title">SmartTable · {{ steps[currentStep].title }}</div>
           </div>
           <div class="mockup-body">
-            <div class="mockup-icon">{{ steps[currentStep].icon }}</div>
-            <h3>{{ steps[currentStep].title }}</h3>
-            <p>{{ steps[currentStep].desc }}</p>
+            <!-- Imagen del paso actual -->
+            <div class="mockup-image">
+              <img 
+                [src]="'/como-funciona-' + (currentStep + 1) + '.png'" 
+                [alt]="steps[currentStep].title"
+                (error)="onImageError($event)"
+              />
+              <div class="image-overlay">
+                <span class="step-badge">{{ steps[currentStep].number }}</span>
+              </div>
+            </div>
+            <div class="mockup-content">
+              <h3>{{ steps[currentStep].title }}</h3>
+              <p>{{ steps[currentStep].desc }}</p>
+            </div>
             <div class="step-dots">
               <span *ngFor="let s of steps; let i = index"
                     class="step-dot"

@@ -24,26 +24,50 @@ export class StSoftwareComponent {
     {
       number: '01',
       icon: '📱',
-      title: 'Explora el menú',
-      desc: 'Los comensales navegan por el menú digital con fotos, descripciones y precios actualizados al instante.'
+      title: 'Menú Completo',
+      desc: 'Accede a mensajes, redes sociales y todo el contenido desde un solo lugar.'
     },
     {
       number: '02',
-      icon: '🛒',
-      title: 'Arma tu pedido',
-      desc: 'Seleccionan los platos, personalizan ingredientes y envían el pedido directamente a cocina con un solo toque.'
+      icon: '🌐',
+      title: 'Redes Sociales',
+      desc: 'Conecta a tus redes en redes sociales de tu comunidad.'
     },
     {
       number: '03',
-      icon: '👨‍🍳',
-      title: 'Cocina en tiempo real',
-      desc: 'El pedido llega a la cocina con todos los detalles, reduciendo errores y tiempos de espera.'
+      icon: '📘',
+      title: 'Facebook',
+      desc: 'Conecta con amigos y familia mientras disfrutas tu comida.'
     },
     {
       number: '04',
-      icon: '✅',
-      title: 'Confirma y disfruta',
-      desc: 'El cliente recibe confirmación del pedido y puede ver el tiempo estimado de preparación.'
+      icon: '📸',
+      title: 'Instagram',
+      desc: 'Comparte fotos y momentos especiales desde tu mesa.'
+    },
+    {
+      number: '05',
+      icon: '🎵',
+      title: 'TikTok',
+      desc: 'Vemos cosas y elementos divertidos mientras esperas tu pedido.'
+    },
+    {
+      number: '06',
+      icon: '🐦',
+      title: 'Twitter / X',
+      desc: 'Música y contenido actualizado en tiempo real.'
+    },
+    {
+      number: '07',
+      icon: '▶️',
+      title: 'YouTube',
+      desc: 'Vemos y entretienemos con tus videos favoritos.'
+    },
+    {
+      number: '08',
+      icon: '🎬',
+      title: 'Netflix',
+      desc: 'Series y películas para disfrutar mientras comes.'
     }
   ];
 
@@ -60,6 +84,28 @@ export class StSoftwareComponent {
   prevStep(): void {
     if (this.currentStep > 0) {
       this.currentStep--;
+    }
+  }
+
+  onImageError(event: Event): void {
+    const img = event.target as HTMLImageElement;
+    img.style.display = 'none';
+    const parent = img.parentElement;
+    if (parent) {
+      const fallback = document.createElement('div');
+      fallback.style.cssText = `
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #0c2340, #1a3a5c);
+        color: white;
+        font-size: 48px;
+        font-weight: 900;
+      `;
+      fallback.textContent = this.steps[this.currentStep].icon;
+      parent.appendChild(fallback);
     }
   }
 }

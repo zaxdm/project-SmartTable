@@ -1,12 +1,41 @@
 <section id="producto" class="st-product-section">
+  <!-- Partículas decorativas de fondo -->
+  <div class="particles-container">
+    <div class="particle" *ngFor="let p of particles"></div>
+  </div>
+  
+  <!-- Formas geométricas flotantes -->
+  <div class="floating-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+  </div>
+
   <div class="st-container st-product-grid">
 
     <div class="st-product-left reveal-left">
       <div class="st-product-image-box">
+        <!-- Anillo giratorio decorativo -->
+        <div class="orbital-ring">
+          <div class="ring-dot"></div>
+          <div class="ring-dot"></div>
+          <div class="ring-dot"></div>
+          <div class="ring-dot"></div>
+        </div>
+        
         <div class="img-glow"></div>
         <div class="st-table-mockup">
           <div class="mockup-badge">
             <span class="live-dot"></span> En vivo
+          </div>
+          <div class="mockup-overlay"></div>
+          <!-- Iconos flotantes sobre la imagen -->
+          <div class="hover-icons">
+            <span class="hover-icon" style="top:15%;left:15%;animation-delay:0s">🍽️</span>
+            <span class="hover-icon" style="top:10%;right:20%;animation-delay:1.2s">✨</span>
+            <span class="hover-icon" style="bottom:20%;left:10%;animation-delay:2.4s">📱</span>
+            <span class="hover-icon" style="bottom:15%;right:15%;animation-delay:0.8s">⭐</span>
           </div>
         </div>
         <div class="floating-chip chip-1">
@@ -15,11 +44,14 @@
         <div class="floating-chip chip-2">
           <span>📱</span> Pantalla HD
         </div>
+        <div class="floating-chip chip-3">
+          <span>✨</span> Interactiva
+        </div>
       </div>
     </div>
 
     <div class="st-product-right reveal-right">
-      <span class="st-section-tag">NUESTRO PRODUCTO</span>
+      <span class="st-section-tag">✦ NUESTRO PRODUCTO</span>
       <h2 class="st-section-title">Mesas de madera con pantalla táctil <span class="accent-word">integrada</span></h2>
       <p class="st-section-desc">
         Diseñamos mesas redondas de madera natural con una pantalla táctil de alta definición en el centro. La combinación perfecta entre calidez y tecnología para ofrecer una experiencia gastronómica memorable.
@@ -27,9 +59,10 @@
       <div class="st-features-list">
         <div *ngFor="let item of productFeatures; let i = index"
              class="st-feature-row"
-             [style.animation-delay]="i * 80 + 'ms'">
+             [style.animation-delay]="i * 100 + 'ms'">
           <div class="st-feature-icon-box">
             <span>{{ item.icon }}</span>
+            <div class="icon-pulse"></div>
           </div>
           <div>
             <h4 class="st-feature-row-title">{{ item.title }}</h4>

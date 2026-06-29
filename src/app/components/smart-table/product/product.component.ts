@@ -15,6 +15,9 @@ interface ProductFeature {
   styleUrls: ['./product.component.css']
 })
 export class StProductComponent {
+  // Array para las partículas
+  particles = Array(10).fill(0);
+  
   productFeatures: ProductFeature[] = [
     {
       icon: '🪵',

@@ -2,11 +2,29 @@
 
 .st-container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
 
+/* ============================================
+   SECTION BASE
+   ============================================ */
 .st-contact-section {
   position: relative;
   background: linear-gradient(160deg, #0c2340 0%, #0f3460 100%);
-  padding: 100px 0 0;
+  padding: 110px 0 0;
   overflow: hidden;
+
+  /* Textura de tablero — líneas finas casi imperceptibles */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 26px
+    );
+    pointer-events: none;
+  }
 }
 
 .contact-orb {
@@ -15,41 +33,83 @@
   filter: blur(100px);
   opacity: 0.2;
   pointer-events: none;
+  animation: orb-drift 14s ease-in-out infinite;
 }
 .contact-orb-1 { width: 450px; height: 450px; top: -100px; left: -80px; background: #0284c7; }
-.contact-orb-2 { width: 380px; height: 380px; bottom: 80px; right: -60px; background: #d96b43; }
+.contact-orb-2 { width: 380px; height: 380px; bottom: 80px; right: -60px; background: #d96b43; animation-delay: -7s; }
 
-/* Reveal */
+@keyframes orb-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(30px, -20px) scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ============================================
+   SCROLL REVEAL — orquestado, no solo fade
+   ============================================ */
 .reveal-left {
   opacity: 0;
-  animation: rev-left 0.8s ease forwards;
+  animation: settle-left 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 .reveal-right {
   opacity: 0;
-  animation: rev-right 0.8s 0.15s ease forwards;
+  animation: settle-right 0.9s 0.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-@keyframes rev-left  { from { opacity:0; transform: translateX(-30px); } to { opacity:1; transform: translateX(0); } }
-@keyframes rev-right { from { opacity:0; transform: translateX(30px);  } to { opacity:1; transform: translateX(0); } }
+@keyframes settle-left {
+  0%   { opacity: 0; transform: translateX(-40px) rotate(-1.5deg); }
+  100% { opacity: 1; transform: translateX(0) rotate(0); }
+}
+@keyframes settle-right {
+  0%   { opacity: 0; transform: translateX(40px) rotate(1.5deg) scale(0.97); }
+  100% { opacity: 1; transform: translateX(0) rotate(0) scale(1); }
+}
 
-/* Grid */
+/* ============================================
+   GRID
+   ============================================ */
 .st-contact-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 70px;
   align-items: center;
-  padding-bottom: 80px;
+  padding-bottom: 90px;
 }
 
-/* LEFT */
+/* ============================================
+   LEFT COLUMN — texto
+   ============================================ */
 .st-section-tag {
-  font-size: 11px; font-weight: 900; text-transform: uppercase;
-  letter-spacing: 2px; color: #f97316; display: block; margin-bottom: 10px;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #f97316;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+
+  &::before {
+    content: '';
+    width: 16px;
+    height: 2px;
+    background: #f97316;
+    border-radius: 2px;
+  }
 }
 
 .st-section-title {
   font-size: clamp(26px, 3.5vw, 40px);
-  font-weight: 900; color: white;
-  line-height: 1.2; margin: 0 0 16px 0; letter-spacing: -1px;
+  font-weight: 900;
+  color: white;
+  line-height: 1.2;
+  margin: 0 0 16px 0;
+  letter-spacing: -1px;
 }
 
 .accent-word {
@@ -59,66 +119,142 @@
   background-clip: text;
 }
 
-.st-section-desc { color: rgba(255,255,255,0.65); font-size: 15px; line-height: 1.7; margin-bottom: 36px; }
+.st-section-desc {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 44px;
+  max-width: 440px;
+}
 
-.st-contact-info-list { display: flex; flex-direction: column; gap: 14px; }
+/* ============================================
+   CONTACT LIST — sin cajas, estilo editorial
+   Cada fila es una línea de datos sobre el fondo,
+   separada por un hairline, con movimiento real
+   al pasar el cursor (no solo cambio de color).
+   ============================================ */
+.st-contact-info-list {
+  display: flex;
+  flex-direction: column;
+}
 
 .st-contact-item {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 16px 18px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 16px;
-  backdrop-filter: blur(6px);
+  gap: 22px;
+  padding: 22px 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   opacity: 0;
-  animation: rev-left 0.5s ease forwards;
-  transition: background 0.2s, transform 0.2s;
+  animation: row-settle 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  cursor: default;
+  transition: padding-left 0.35s ease;
+
+  &:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Línea de acento que crece desde abajo, como un cursor encendiéndose */
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 1px;
+    width: 0;
+    background: linear-gradient(90deg, #f97316, #fbbf24);
+    transition: width 0.45s ease;
+  }
+
+  &:hover {
+    padding-left: 14px;
+
+    &::after { width: 100%; }
+
+    .contact-icon-wrap {
+      transform: rotate(-8deg) scale(1.1);
+      color: #f97316;
+    }
+
+    .st-contact-item p {
+      color: #fbbf24;
+    }
+  }
 }
-.st-contact-item:hover {
-  background: rgba(255,255,255,0.1);
-  transform: translateX(4px);
+@keyframes row-settle {
+  0%   { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
+/* Ícono suelto, sin contenedor — grande, parte del texto */
 .contact-icon-wrap {
-  width: 40px; height: 40px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
+  font-size: 26px;
+  line-height: 1;
   flex-shrink: 0;
+  display: inline-flex;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
 }
 
-.st-contact-item label { font-size: 10px; font-weight: 800; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.5px; display: block; }
-.st-contact-item p    { font-size: 14px; font-weight: 700; color: white; margin: 3px 0 0 0; }
+.st-contact-item label {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  display: block;
+}
+.st-contact-item p {
+  font-size: 19px;
+  font-weight: 700;
+  color: white;
+  margin: 4px 0 0 0;
+  letter-spacing: -0.2px;
+  transition: color 0.3s ease;
+}
 
-/* RIGHT — CARD */
-.st-contact-box {
-  background: white;
-  border-radius: 28px;
-  padding: 40px;
-  box-shadow: 0 32px 64px rgba(0,0,0,0.3);
+/* ============================================
+   RIGHT COLUMN — panel "encendido", no card corporativa
+   ============================================ */
+.contact-right {
   position: relative;
-  overflow: hidden;
+  z-index: 1;
 }
 
-.box-top-stripe {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #0c2340, #d96b43, #f97316);
-  background-size: 200%;
-  animation: stripe-move 3s linear infinite;
+.st-contact-box {
+  position: relative;
+  border-radius: 24px;
+  padding: 2.5px; /* hueco para el borde animado */
+  background: linear-gradient(
+    115deg,
+    #f97316 0%,
+    #fbbf24 16%,
+    rgba(255, 255, 255, 0.12) 34%,
+    rgba(255, 255, 255, 0.12) 66%,
+    #d96b43 84%,
+    #f97316 100%
+  );
+  background-size: 250% 250%;
+  animation: border-sweep 6s ease-in-out infinite;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.35);
 }
-@keyframes stripe-move {
-  0%   { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+@keyframes border-sweep {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+.st-contact-box-inner {
+  position: relative;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 42px 38px 38px;
 }
 
 .box-header { margin-bottom: 16px; }
+
 .box-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: #fff7ed;
   border: 1px solid #fed7aa;
   color: #d96b43;
@@ -128,9 +264,20 @@
   border-radius: 50px;
 }
 
-.st-contact-box h3 { font-size: 20px; font-weight: 900; color: #0c2340; margin: 0 0 10px 0; }
-.st-contact-box p  { font-size: 13px; color: #718096; line-height: 1.55; margin-bottom: 24px; }
+.st-contact-box h3 {
+  font-size: 21px;
+  font-weight: 900;
+  color: #0c2340;
+  margin: 0 0 10px 0;
+}
+.st-contact-box p {
+  font-size: 13.5px;
+  color: #718096;
+  line-height: 1.6;
+  margin-bottom: 26px;
+}
 
+/* Botón WhatsApp — el elemento físico, con peso real */
 .st-btn-wp {
   width: 100%;
   display: flex;
@@ -140,22 +287,57 @@
   background: linear-gradient(90deg, #16a34a, #22c55e);
   border: none;
   color: white;
-  padding: 15px;
-  font-size: 15px;
+  padding: 17px;
+  font-size: 15.5px;
   font-weight: 800;
   border-radius: 50px;
   cursor: pointer;
   font-family: inherit;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 6px 20px rgba(34,197,94,0.35);
-  margin-bottom: 14px;
-}
-.st-btn-wp:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(34,197,94,0.5);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.4);
+  margin-bottom: 16px;
+
+  svg {
+    transition: transform 0.3s ease;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+  }
+
+  &:hover {
+    transform: translateY(-4px) scale(1.015);
+    box-shadow: 0 14px 34px rgba(34, 197, 94, 0.55);
+
+    &::before { left: 125%; }
+    svg { transform: rotate(-8deg) scale(1.1); }
+  }
+
+  &:active {
+    transform: translateY(-1px) scale(0.99);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #0c2340;
+    outline-offset: 3px;
+  }
 }
 
-.st-social-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.st-social-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
 
 .st-btn-social {
   display: flex;
@@ -171,19 +353,35 @@
   border-radius: 50px;
   cursor: pointer;
   font-family: inherit;
-  transition: all 0.2s ease;
-}
-.st-btn-social:hover {
-  border-color: #0c2340;
-  color: #0c2340;
-  transform: translateY(-2px);
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+
+  span {
+    transition: transform 0.3s ease;
+    display: inline-flex;
+  }
+
+  &:hover {
+    border-color: #0c2340;
+    color: #0c2340;
+    transform: translateY(-2px);
+
+    span { transform: scale(1.2) rotate(-6deg); }
+  }
+
+  &:focus-visible {
+    outline: 2px solid #0c2340;
+    outline-offset: 3px;
+  }
 }
 
-/* FOOTER STRIP */
+/* ============================================
+   FOOTER STRIP
+   ============================================ */
 .footer-strip {
-  border-top: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding: 24px 0;
-  margin-top: 0;
 }
 .footer-strip-inner {
   display: flex;
@@ -192,11 +390,27 @@
   flex-wrap: wrap;
   gap: 10px;
 }
-.footer-logo { font-size: 18px; font-weight: 900; color: rgba(255,255,255,0.6); }
-.footer-logo span { color: #d96b43; }
-.footer-copy { font-size: 12px; color: rgba(255,255,255,0.35); }
+.footer-logo {
+  font-size: 18px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.6);
 
+  span { color: #d96b43; }
+}
+.footer-copy {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 @media (max-width: 860px) {
-  .st-contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .st-contact-grid { grid-template-columns: 1fr; gap: 56px; }
   .footer-strip-inner { justify-content: center; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .st-contact-box-inner { padding: 36px 26px 30px; }
+  .st-contact-item p { font-size: 17px; }
 }

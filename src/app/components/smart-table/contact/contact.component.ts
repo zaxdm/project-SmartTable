@@ -18,6 +18,7 @@ export class StContactComponent {
   ];
 
   openWhatsApp() {
-    window.open('https://wa.me/51950883156', '_blank');
+    const msg = encodeURIComponent('Hola SmartTable, me interesa conocer más sobre las mesas táctiles interactivas.');
+    window.open(`https://wa.me/51993981844?text=${msg}`, '_blank');
   }
 }

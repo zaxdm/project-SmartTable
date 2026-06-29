@@ -1,0 +1,91 @@
+<section id="software" class="st-software-section">
+  <div class="sw-bg-orb sw-orb-1"></div>
+  <div class="sw-bg-orb sw-orb-2"></div>
+
+  <div class="st-container">
+    <div class="sw-header reveal-up">
+      <span class="st-section-tag">SOFTWARE A MEDIDA</span>
+      <h2 class="st-section-title">Un software intuitivo, <span class="accent-gradient">totalmente editable</span></h2>
+      <p class="st-section-desc">
+        Cada mesa SmartTable incluye un software diseñado para restaurantes. Tus clientes exploran el menú, arman su pedido y lo envían a cocina sin esperar. Adaptamos categorías, fotografías, precios y promociones.
+      </p>
+    </div>
+
+    <div class="sw-cards-grid reveal-up" style="animation-delay:100ms">
+      <div class="sw-card">
+        <div class="sw-card-icon">🍽️</div>
+        <div class="sw-card-screen"></div>
+        <h3>Menú interactivo</h3>
+        <p>Categorías, fotos y descripciones de cada plato al alcance de un toque.</p>
+      </div>
+      <div class="sw-card">
+        <div class="sw-card-icon">⚡</div>
+        <div class="sw-card-screen"></div>
+        <h3>Pedidos en tiempo real</h3>
+        <p>El pedido viaja directo a cocina, reduciendo tiempos y errores en el servicio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="st-how-section">
+  <div class="st-container">
+    <div class="how-header reveal-up">
+      <span class="st-section-tag orange">CÓMO FUNCIONA</span>
+      <h2 class="st-section-title light">Una experiencia simple, paso a paso</h2>
+    </div>
+
+    <div class="how-layout">
+      <!-- Tabs -->
+      <div class="how-tabs reveal-left">
+        <div *ngFor="let step of steps; let i = index"
+             class="how-tab"
+             [class.active]="i === currentStep"
+             (click)="goToStep(i)">
+          <div class="tab-num">{{ step.number }}</div>
+          <div class="tab-body">
+            <div class="tab-icon">{{ step.icon }}</div>
+            <div class="tab-title">{{ step.title }}</div>
+          </div>
+          <div class="tab-arrow">›</div>
+        </div>
+      </div>
+
+      <!-- Mockup display -->
+      <div class="how-mockup reveal-right">
+        <div class="mockup-window">
+          <div class="window-bar">
+            <div class="window-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="window-title">SmartTable · {{ steps[currentStep].title }}</div>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-icon">{{ steps[currentStep].icon }}</div>
+            <h3>{{ steps[currentStep].title }}</h3>
+            <p>{{ steps[currentStep].desc }}</p>
+            <div class="step-dots">
+              <span *ngFor="let s of steps; let i = index"
+                    class="step-dot"
+                    [class.active]="i === currentStep"
+                    (click)="goToStep(i)">
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="how-controls">
+          <button class="ctrl-btn" (click)="prevStep()" [disabled]="currentStep === 0">
+            ← Anterior
+          </button>
+          <span class="ctrl-count">{{ currentStep + 1 }} / {{ steps.length }}</span>
+          <button class="ctrl-btn primary" (click)="nextStep()" [disabled]="currentStep === steps.length - 1">
+            Siguiente →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

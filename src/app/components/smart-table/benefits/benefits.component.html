@@ -1,0 +1,23 @@
+<section id="beneficios" class="st-benefits-section">
+  <div class="benefits-bg-orb"></div>
+  <div class="st-container">
+    <div class="benefits-header reveal-up">
+      <span class="st-section-tag">BENEFICIOS</span>
+      <h2 class="st-section-title">Por qué elegir <span class="accent-word">SmartTable</span></h2>
+      <p class="st-section-desc">Más que una mesa. Una plataforma de experiencia gastronómica que diferencia tu restaurante.</p>
+    </div>
+
+    <div class="st-benefits-grid">
+      <div *ngFor="let benefit of benefits; let i = index"
+           class="st-benefit-card"
+           [style.animation-delay]="i * 80 + 'ms'"
+           [style.--accent]="benefit.accent">
+        <div class="card-glow"></div>
+        <div class="st-benefit-icon">{{ benefit.icon }}</div>
+        <h3>{{ benefit.title }}</h3>
+        <p>{{ benefit.description }}</p>
+        <div class="card-bottom-line"></div>
+      </div>
+    </div>
+  </div>
+</section>

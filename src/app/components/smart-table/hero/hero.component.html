@@ -1,0 +1,86 @@
+<section id="quienes-somos" class="st-hero">
+  <!-- Orbs decorativos animados -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- Partículas flotantes -->
+  <div class="particles">
+    <span *ngFor="let p of particles" class="particle"
+          [style.left]="p.left"
+          [style.top]="p.top"
+          [style.width]="p.size"
+          [style.height]="p.size"
+          [style.animation-delay]="p.delay"
+          [style.animation-duration]="p.duration">
+    </span>
+  </div>
+
+  <div class="st-hero-inner">
+    <div class="st-hero-left">
+      <div class="st-badge animate-fade-up" style="animation-delay:0ms">
+        <span class="badge-dot"></span>
+        ✨ Tecnología que transforma experiencias
+      </div>
+
+      <h1 class="st-main-title animate-fade-up" style="animation-delay:100ms">
+        Mesas táctiles <br>
+        <span class="st-text-gradient">interactivas</span><br>
+        para restaurantes
+      </h1>
+
+      <p class="st-description animate-fade-up" style="animation-delay:200ms">
+        En SmartTable diseñamos mesas redondas de madera con pantalla táctil integrada y un software editable a la medida de tu restaurante. Optimiza pedidos, sorprende a tus clientes y diferénciate de la competencia.
+      </p>
+
+      <div class="st-actions animate-fade-up" style="animation-delay:300ms">
+        <a href="#contacto" class="st-btn-primary">
+          Solicitar demostración
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#producto" class="st-btn-secondary">Ver producto →</a>
+      </div>
+
+      <div class="st-stats-grid animate-fade-up" style="animation-delay:400ms">
+        <div *ngFor="let stat of stats" class="st-stat-item">
+          <div class="st-stat-val">{{ stat.value }}</div>
+          <div class="st-stat-lbl">{{ stat.label }}</div>
+          <div class="st-stat-sub">{{ stat.sublabel }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="st-hero-right animate-fade-left" style="animation-delay:200ms">
+      <div class="st-image-card">
+        <div class="card-shine"></div>
+        <div class="st-img-placeholder">
+          <div class="st-floating-info">
+            <div class="st-floating-icon">🍴</div>
+            <div>
+              <div class="st-floating-tag">MENÚ DIGITAL</div>
+              <div class="st-floating-title">Pedidos en segundos</div>
+            </div>
+          </div>
+          <div class="st-floating-stat">
+            <div class="st-stat-circle">
+              <svg viewBox="0 0 36 36" width="56" height="56">
+                <circle cx="18" cy="18" r="15" fill="none" stroke="#edf2f7" stroke-width="3"/>
+                <circle cx="18" cy="18" r="15" fill="none" stroke="#d96b43" stroke-width="3"
+                        stroke-dasharray="58 38" stroke-dashoffset="9" stroke-linecap="round"/>
+              </svg>
+              <span>+40%</span>
+            </div>
+            <div class="st-stat-label-sm">más pedidos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wave divisor -->
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+</section>

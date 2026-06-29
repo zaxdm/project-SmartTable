@@ -1,0 +1,43 @@
+<section id="producto" class="st-product-section">
+  <div class="st-container st-product-grid">
+
+    <div class="st-product-left reveal-left">
+      <div class="st-product-image-box">
+        <div class="img-glow"></div>
+        <div class="st-table-mockup">
+          <div class="mockup-badge">
+            <span class="live-dot"></span> En vivo
+          </div>
+        </div>
+        <div class="floating-chip chip-1">
+          <span>🪵</span> Madera premium
+        </div>
+        <div class="floating-chip chip-2">
+          <span>📱</span> Pantalla HD
+        </div>
+      </div>
+    </div>
+
+    <div class="st-product-right reveal-right">
+      <span class="st-section-tag">NUESTRO PRODUCTO</span>
+      <h2 class="st-section-title">Mesas de madera con pantalla táctil <span class="accent-word">integrada</span></h2>
+      <p class="st-section-desc">
+        Diseñamos mesas redondas de madera natural con una pantalla táctil de alta definición en el centro. La combinación perfecta entre calidez y tecnología para ofrecer una experiencia gastronómica memorable.
+      </p>
+      <div class="st-features-list">
+        <div *ngFor="let item of productFeatures; let i = index"
+             class="st-feature-row"
+             [style.animation-delay]="i * 80 + 'ms'">
+          <div class="st-feature-icon-box">
+            <span>{{ item.icon }}</span>
+          </div>
+          <div>
+            <h4 class="st-feature-row-title">{{ item.title }}</h4>
+            <p class="st-feature-row-desc">{{ item.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

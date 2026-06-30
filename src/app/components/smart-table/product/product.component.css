@@ -221,7 +221,7 @@
 .st-table-mockup {
   position: relative;
   aspect-ratio: 4/3;
-  background: url('https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80') center/cover;
+  background: url('/imagen0.jpeg') center/cover;
   border-radius: 22px;
   box-shadow: 
     0 20px 50px rgba(12, 35, 64, 0.15),
